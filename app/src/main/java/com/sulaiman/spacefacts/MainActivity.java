@@ -24,6 +24,5 @@ public class MainActivity extends AppCompatActivity {
         lower.setAnimation(downToUp);
         upper.setAnimation(upToDown);
 
-
     }
 }
