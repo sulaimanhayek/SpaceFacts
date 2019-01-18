@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SpaceFacts</string>
     <string name="space_facts">Space Facts</string>
+    <string name="journey">Start the Journey</string>
 </resources>
