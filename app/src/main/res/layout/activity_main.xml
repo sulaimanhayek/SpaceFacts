@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:background="@drawable/bckg">
+    android:background="@drawable/gradient">
 
     <LinearLayout
+        android:id="@+id/upper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -18,24 +19,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="200dp"
             android:text="@string/space_facts"
             android:textColor="@color/lightorangedark"
-            android:textSize="50sp" />
+            android:textSize="48sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lower"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_weight="1">
         <Button
+            android:id="@+id/button"
+            android:layout_marginTop="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/journey"
             android:layout_gravity="center"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 
