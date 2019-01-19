@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="hello" tools:ignore="ExtraTranslation">Hello</string>
+    <string name="space_facts" tools:ignore="ExtraTranslation">Space Facts</string>
+</resources>
