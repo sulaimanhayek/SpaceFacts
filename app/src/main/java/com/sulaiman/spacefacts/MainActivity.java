@@ -1,11 +1,14 @@
 package com.sulaiman.spacefacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -28,16 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        upper = findViewById(R.id.upper);
-        lower = findViewById(R.id.lower);
-        upToDown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
-        downToUp = AnimationUtils.loadAnimation(this, R.anim.downtoup);
-        lower.setAnimation(downToUp);
-        upper.setAnimation(upToDown);
+    protected void onStart() {
+        super.onStart();
         textView = (TextView) findViewById(R.id.name);
         Paper.init(this);
         // default laguage is english
@@ -46,34 +41,37 @@ public class MainActivity extends AppCompatActivity {
             new Paper().book().write("language", "en");
         updateView((String) Paper.book().read("language"));
 
+
     }
 
-    private void updateView(String lang) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        upper = findViewById(R.id.upper);
+        lower = findViewById(R.id.lower);
+        upToDown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        downToUp = AnimationUtils.loadAnimation(this, R.anim.downtoup);
+        upper.setAnimation(upToDown);
+        lower.setAnimation(downToUp);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(MainActivity.this, LangActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+
+    }
+    public void updateView(String lang) {
         Context context = LocaleHelper.setLocale(this, lang);
         Resources resources = context.getResources();
         textView.setText(resources.getString(R.string.space_facts));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.language_en) {
-            Paper.book().write("language", "en");
-            updateView((String) Paper.book().read("language"));
-        } else if (item.getItemId() == R.id.language_ar) {
-            Paper.book().write("language", "ar");
-            updateView((String) Paper.book().read("language"));
-        }
-        else if (item.getItemId() == R.id.language_tr) {
-            Paper.book().write("language", "tr");
-            updateView((String) Paper.book().read("language"));
-        }
-        return true;
-
+        button.setText(resources.getString(R.string.journey));
     }
 }

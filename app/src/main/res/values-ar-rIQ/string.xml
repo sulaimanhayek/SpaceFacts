@@ -2,5 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="hello" tools:ignore="ExtraTranslation">مرحباُ</string>
     <string name="space_facts" tools:ignore="ExtraTranslation">أكتشف الفضاء</string>
+    <string name="journey">إبدأ الرحـلة</string>
+
 
 </resources>
